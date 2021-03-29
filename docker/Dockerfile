@@ -1,4 +1,11 @@
+FROM maven:3.6.3-openjdk-15-slim AS MAVEN_BUILD
+
+COPY src /home/app/src
+COPY pom.xml /home/app
+RUN mvn -f /home/app/pom.xml clean package
+
 FROM openjdk:15.0.2-jdk-slim
 
-COPY target/github-webscrapper*.jar github-webscrapper-1.0.0.jar
+COPY --from=MAVEN_BUILD /home/app/target/github-webscrapper-1.0.0.jar /usr/local/lib/github-webscrapper-1.0.0.jar
+EXPOSE 8080
 ENTRYPOINT ["java","-jar","/github-webscrapper-1.0.0.jar"]
