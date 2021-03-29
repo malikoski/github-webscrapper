@@ -32,7 +32,7 @@ public class GithubRepoDetailController {
         long start = System.nanoTime();
         log.info("Start fetch repo: owner = {},  repo = {}", owner, repo);
 
-        CompletableFuture<List<GithubResponse>> content = service.getResultsRepo(githubHelper.createGithubUrl(owner, repo));
+        CompletableFuture<List<GithubResponse>> content = service.getStaticsFilesFromRepo(githubHelper.createGithubUrl(owner, repo));
 
         CompletableFuture.allOf(content).join();
         var result = content.get();

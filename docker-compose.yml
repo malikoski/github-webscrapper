@@ -9,7 +9,7 @@ services:
   github-webscrapper:
     image: 'github-webscrapper:latest'
     build:
-      dockerfile: docker/Dockerfile
+      dockerfile: Dockerfile
       context: .
     container_name: github-webscrapper-service
     ports:

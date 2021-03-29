@@ -30,7 +30,7 @@ public class GitHubFileDetailService {
 
 
     @Async("poolExecutorScrapper")
-    public CompletableFuture<List<GithubResponse>> getResultsRepo(String uri) {
+    public CompletableFuture<List<GithubResponse>> getStaticsFilesFromRepo(String uri) {
         return getFiles(uri, new LinkedList<>())
                 .thenApply(githubFiles -> githubFiles.stream()
                         .collect(Collectors.groupingBy(g -> g.getExtension()))
