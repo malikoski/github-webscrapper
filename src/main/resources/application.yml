@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+spring:
+  cache:
+    type: redis
+  redis:
+    host: localhost
+    port: 6379
+
+app:
+  github:
+    url-base: "https://github.com"
+    name-class-href-search: "js-navigation-open Link--primary"
+
